@@ -17,7 +17,7 @@ model = AutoModelForCausalLM.from_pretrained(
     device_map="auto",  # Automatically map the model to GPU/CPU
     max_memory={
         "cpu": "12GiB",        # Allocate up to 12 GB of CPU RAM
-        "0": "13GiB"      # Leave ~1.7 GB of headroom on GPU
+        0: "13GiB"      # Leave ~1.7 GB of headroom on GPU
     }
 )
 print("Loaded model", model.hf_device_map)
