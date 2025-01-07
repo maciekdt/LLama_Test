@@ -14,10 +14,10 @@ model = AutoModelForCausalLM.from_pretrained(
     torch_dtype=torch.bfloat16,
     device_map="auto",
 )
-tokenizer = AutoTokenizer.from_pretrained(args.smodel_id)
-
-# Save the model and tokenizer locally
 model.save_pretrained(save_dir)
-tokenizer.save_pretrained(save_dir)
-
 print("Saved ", args.model_id)
+
+tokenizer = AutoTokenizer.from_pretrained(args.model_id)
+tokenizer.save_pretrained(save_dir)
+print("Saved tokenizer")
+
