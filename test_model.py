@@ -14,7 +14,11 @@ print("Loading model...")
 model = AutoModelForCausalLM.from_pretrained(
     save_directory,
     torch_dtype=torch.bfloat16,  # Use float16 or float32 if bfloat16 isn't supported
-    device_map="auto"  # Automatically map the model to GPU/CPU
+    device_map="auto",  # Automatically map the model to GPU/CPU
+    max_memory={
+        "cpu": "12GiB",        # Allocate up to 12 GB of CPU RAM
+        "cuda:0": "13GiB"      # Leave ~1.7 GB of headroom on GPU
+    }
 )
 print("Loaded model", model.hf_device_map)
 
