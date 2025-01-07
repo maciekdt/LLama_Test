@@ -16,6 +16,8 @@ model = AutoModelForCausalLM.from_pretrained(
     torch_dtype=torch.bfloat16,  # Use float16 or float32 if bfloat16 isn't supported
     device_map="auto"  # Automatically map the model to GPU/CPU
 )
+print("Loaded model", model.hf_device_map)
+
 tokenizer = AutoTokenizer.from_pretrained(save_directory)
 
 # Prepare input
